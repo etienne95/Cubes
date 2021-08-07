@@ -1,10 +1,10 @@
 using Cubes.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Cubes.Api.DTOs
 {
     public class CalculateVolumeIntersectionRequest
     {
-        public Cube CubeA { get; set; }
-        public Cube CubeB { get; set; }
+        public IEnumerable<Cube> Cubes { get; set; }
     }
 }

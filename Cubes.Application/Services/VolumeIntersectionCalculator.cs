@@ -1,20 +1,30 @@
 using System;
+using System.Collections.Generic;
 using Cubes.Domain.Entities;
 using Cubes.Domain.Interfaces;
+using System.Linq;
 
 namespace Cubes.Application.Services
 {
     public class VolumeIntersectionCalculator : IVolumeIntersectionCalculator
     {
-        public double CalculateCubesIntersectionVolume(Cube cubeA, Cube cubeB) 
-            => CalculateBordersIntersection(cubeA.Height, cubeB.Height) *
-                CalculateBordersIntersection(cubeA.Width, cubeB.Width) *
-                CalculateBordersIntersection(cubeA.Profundity, cubeB.Profundity);
+        public double CalculateCubesIntersectionVolume(IEnumerable<Cube> cubes)
+            => CalculateBordersIntersection(cubes.Select(c => c.Height)) *
+                CalculateBordersIntersection(cubes.Select(c => c.Width)) *
+                CalculateBordersIntersection(cubes.Select(c => c.Profundity));
 
-        public double CalculateBordersIntersection(Border borderA, Border borderB)
-            => Math.Max(0, CalculateBordersDifference(borderA, borderB));
+        private double CalculateBordersIntersection(IEnumerable<Border> borders)
+        {
+            double result = 0.0;
+            _ = borders.Aggregate((borderA, borderB) =>
+            {
+                result = Math.Max(result, CalculateBordersDifference(borderA, borderB));
+                return borderB;
+            });
+            return result;
+        }
 
-        public double CalculateBordersDifference(Border borderA, Border borderB)
+        private double CalculateBordersDifference(Border borderA, Border borderB)
             => Math.Min(borderA.End, borderB.End) - Math.Max(borderA.Start, borderB.Start);
     }
 }

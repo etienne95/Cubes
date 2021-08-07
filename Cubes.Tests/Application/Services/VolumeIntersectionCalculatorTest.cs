@@ -30,7 +30,7 @@ namespace Cubes.Tests.Application.Services
             };
 
             // Act
-            var result = sut.CalculateCubesIntersectionVolume(cubeA, cubeB);
+            var result = sut.CalculateCubesIntersectionVolume(new[] { cubeA, cubeB });
 
             // Assert
             result.Should().Be(expected);

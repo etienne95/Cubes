@@ -18,7 +18,7 @@ namespace Cubes.Tests.Api
             const double expectedResult = 2.0;
 
             _mockProvider.Mock<IVolumeIntersectionCalculator>()
-                .Setup(mock => mock.CalculateCubesIntersectionVolume(request.CubeA, request.CubeB))
+                .Setup(mock => mock.CalculateCubesIntersectionVolume(request.Cubes))
                 .Returns(expectedResult);
 
             // Act
