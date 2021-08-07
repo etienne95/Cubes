@@ -21,7 +21,7 @@ dotnet test
 ###
 Request Example
 ```
-curl -X POST "http://localhost:5000/Cubes/intersection-volume" -H  "accept: text/plain" -H  "Content-Type: application/json" -d "{\"cubeA\":{\"width\":{\"center\":2,\"length\":2},\"height\":{\"center\":2,\"length\":2},\"profundity\":{\"center\":2,\"length\":2}},\"cubeB\":{\"width\":{\"center\":2,\"length\":2},\"height\":{\"center\":2,\"length\":2},\"profundity\":{\"center\":2,\"length\":2}}}"
+curl -X POST "http://localhost:5000/Cubes/intersection-volume" -H  "accept: text/plain" -H  "Content-Type: application/json" -d "{\"cubes\":[{\"width\":{\"center\":2,\"length\":2},\"height\":{\"center\":2,\"length\":2},\"profundity\":{\"center\":2,\"length\":2}},{\"width\":{\"center\":2,\"length\":2},\"height\":{\"center\":2,\"length\":2},\"profundity\":{\"center\":2,\"length\":2}}]}"
 ```
 
 ### 

@@ -20,7 +20,7 @@ namespace Cubes.Api.Controllers
         [ProducesResponseType(typeof(double), (int)HttpStatusCode.OK)]
         public double CalculateVolumeIntersection([FromBody] CalculateVolumeIntersectionRequest request)
         {
-            return _volumeCalculator.CalculateCubesIntersectionVolume(request.CubeA, request.CubeB);
+            return _volumeCalculator.CalculateCubesIntersectionVolume(request.Cubes);
         }
     }
 }
